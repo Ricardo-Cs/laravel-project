@@ -44,7 +44,7 @@ class PaginationPresenter implements PaginationInterface {
         return $this->paginator->currentPage() + 1;
     }
 
-    public function getPreviousNextPage(): int {
+    public function getNumberPreviousPage(): int {
         return $this->paginator->currentPage() - 1;
     }
 
