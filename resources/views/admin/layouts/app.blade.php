@@ -12,11 +12,10 @@
     <section class="container px-4 mx-auto">
         @yield('header')
 
-        <div class="content">
+        <div>
+            <x-messages />
             @yield('content')
         </div>
-
-        <footer></footer>
     </section>
 </body>
 </html>
