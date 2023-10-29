@@ -9,15 +9,15 @@ return new class extends Migration {
      * Run the migrations.
      */
     public function up(): void {
-        Schema::create('users', function (Blueprint $table) {
-            // $table->id();
+        Schema::create('replies_support', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->uuid('user_id')->index();
+            $table->uuid('support_id')->index();
+            $table->text('content');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('support_id')->references('id')->on('supports');
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration {
      * Reverse the migrations.
      */
     public function down(): void {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('replies_support');
     }
 };
