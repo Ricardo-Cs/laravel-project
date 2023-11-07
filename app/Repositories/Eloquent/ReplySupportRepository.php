@@ -26,6 +26,7 @@ class ReplySupportRepository implements ReplyRepositoryInterface {
             'content' => $dto->content,
             'user_id' => Auth::user()->id,
         ]);
+        $reply->load('support.user');
 
         return (object) $reply->toArray();
     }
