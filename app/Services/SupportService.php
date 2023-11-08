@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\DTO\Supports\CreateSupportDTO;
 use App\DTO\Supports\UpdateSupportDTO;
+use App\Enums\SupportStatusEnum;
 use App\Repositories\Contracts\PaginationInterface;
 use App\Repositories\Contracts\SupportRepositoryInterface;
 use Illuminate\Support\Facades\Gate;
@@ -40,5 +41,9 @@ class SupportService {
 
     public function update(UpdateSupportDTO $dto): stdClass | null {
         return $this->repository->update($dto);
+    }
+
+    public function updateStatus(string $id, SupportStatusEnum $status): void {
+        $this->repository->updateStatus($id, $status);
     }
 }
