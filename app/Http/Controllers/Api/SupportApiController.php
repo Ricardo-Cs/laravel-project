@@ -40,7 +40,7 @@ class SupportApiController extends Controller {
             CreateSupportDTO::makeFromRequest($request)
         );
 
-        return new SupportResource($support);
+        return (new SupportResource($support))->response()->setStatusCode(Response::HTTP_CREATED);
     }
 
     /**
